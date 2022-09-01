@@ -43,6 +43,7 @@ class Dev(Configuration):
     CRISPY_TEMPLATE_PACK = "bootstrap5"
     INTERNAL_IPS = ["192.168.10.226"]
     AUTH_USER_MODEL = "blango_auth.User"
+    # LOGIN_REDIRECT_URL = "index"
 
 
     # Application definition
@@ -222,6 +223,9 @@ class Dev(Configuration):
             "level": "DEBUG",
         },
     }
+
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
 
 
 class Prod(Dev):
