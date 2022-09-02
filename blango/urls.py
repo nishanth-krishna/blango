@@ -38,6 +38,7 @@ urlpatterns = [
         name="django_registration_register",
     ),
     path("accounts/", include("django_registration.backends.activation.urls")), #this is for two step authentication stuff
+    path("accounts/", include("allauth.urls")),
 ]
 
 if settings.DEBUG:

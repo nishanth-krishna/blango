@@ -44,6 +44,11 @@ class Dev(Configuration):
     INTERNAL_IPS = ["192.168.10.226"]
     AUTH_USER_MODEL = "blango_auth.User"
     # LOGIN_REDIRECT_URL = "index"
+    SITE_ID = 1 
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None    #There is no username field on the User model.
+    ACCOUNT_EMAIL_REQUIRED = True      #The third-party provider must provide an email address when authenticating.
+    ACCOUNT_USERNAME_REQUIRED = False     #The username of the User is not required.
+    ACCOUNT_AUTHENTICATION_METHOD = "email"     #The user authenticates by entering their email address.
 
 
     # Application definition
@@ -54,12 +59,17 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'django.contrib.sites',
         'django.contrib.staticfiles',
         'crispy_bootstrap5',
         'crispy_forms',
         'blog',
         'debug_toolbar',
         'blango_auth',
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
     ]
 
     MIDDLEWARE = [
